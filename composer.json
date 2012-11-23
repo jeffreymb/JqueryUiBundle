@@ -1,0 +1,25 @@
+{
+    "name": "icode4food/jqueryui-bundle",
+    "type": "symfony-bundle",
+    "description": "jQuery UI AMD Bundle for Symfony2",
+    "keywords": ["backbone", "javascript", "icode4food"],
+    "homepage": "http://jqueryui.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "email": "bernd@manymules.com",
+            "homepage": "https://github.com/Icode4food"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": "2.*"
+    },
+    "recommend": {
+		"manymules/jquery-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": { "Icode4food\\JqueryUiBundle": "" }
+    },
+    "target-dir": "Icode4food/JqueryUiBundle"
+}
