@@ -21,8 +21,8 @@ define(['jquery', './tablesorter'],function($) {
 			// and a filterList = [[2,Blue],[3,13]] becomes "&fcol[2]=Blue&fcol[3]=13" in the url
 			ajaxUrl: null,
 
+			// modify the url after all processing has been applied
 			customAjaxUrl: function(table, url) { return url; },
-
 
 			// process ajax so that the following information is returned:
 			// [ total_rows (number), rows (array of arrays), headers (array; optional) ]
@@ -305,7 +305,7 @@ define(['jquery', './tablesorter'],function($) {
 			if ( typeof(c.customAjaxUrl) === "function" ) {
 				url = c.customAjaxUrl(table, url);
 			}
-                        
+
 			return url;
 		},
 
@@ -477,24 +477,30 @@ define(['jquery', './tablesorter'],function($) {
 						updatePageDisplay(table, c);
 						fixHeight(table, c);
 					})
-					.bind('disable.pager', function(){
+					.bind('disable.pager', function(e){
+						e.stopPropagation();
 						showAllRows(table, c);
 					})
-					.bind('enable.pager', function(){
+					.bind('enable.pager', function(e){
+						e.stopPropagation();
 						enablePager(table, c, true);
 					})
-					.bind('destroy.pager', function(){
+					.bind('destroy.pager', function(e){
+						e.stopPropagation();
 						destroyPager(table, c);
 					})
-					.bind('update.pager', function(){
+					.bind('update.pager', function(e){
+						e.stopPropagation();
 						hideRows(table, c);
 					})
 					.bind('pageSize.pager', function(e,v){
+						e.stopPropagation();
 						c.size = parseInt(v, 10) || 10;
 						hideRows(table, c);
 						updatePageDisplay(table, c);
 					})
 					.bind('pageSet.pager', function(e,v){
+						e.stopPropagation();
 						c.page = (parseInt(v, 10) || 1) - 1;
 						moveToPage(table, c);
 						updatePageDisplay(table, c);
